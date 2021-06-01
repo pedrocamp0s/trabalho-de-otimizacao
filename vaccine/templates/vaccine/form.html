@@ -1,0 +1,74 @@
+<html>
+    <head>
+        {% load static %}
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static 'vaccine/materialize.min.css' %}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <div style="padding-top: 25vh; padding-bottom: 0vh; padding-left: 25vw; padding-right: 25vw;">
+            <div class="row">
+                <form class="col s12" method="POST" action="{% url 'result' %}">
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">local_drink</i>
+                      <input placeholder="Quantidade de vacina em cada frasco" id="vaccine_quantity" type="text" class="validate" name="vaccine_quantity" value="{{ vaccine_quantity }}">
+                      <label for="vaccine_quantity">Quantidade em cada frasco</label>
+                      {% if hasErrorText %}
+                      <span class="helper-text">{{ vaccine_quantityErrorText }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">opacity</i>
+                        <input placeholder="Quantidade da dose da vacina" id="vaccine_dose" type="text" class="validate" name="vaccine_dose" value="{{ vaccine_dose }}">
+                        <label for="vaccine_dose">Quantidade na dose</label>
+                        {% if hasErrorText %}
+                      <span class="helper-text">{{ vaccine_doseErrorText }}</span>
+                        {% endif %}
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input placeholder="Tempo de trabalho das equipes" id="work_time" type="time" class="validate" name="work_time" value="{{ work_time }}">
+                      <label for="work_time">Tempo de trabalho</label>
+                      {% if hasErrorText %}
+                      <span class="helper-text">{{ work_timeErrorText }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Tempo gasto na aplicação de cada vacina" id="vaccine_time" type="time" class="validate" name="vaccine_time" value="{{ vaccine_time }}">
+                        <label for="vaccine_time">Tempo de vacinação</label>
+                        {% if hasErrorText %}
+                      <span class="helper-text">{{ vaccine_timeErrorText }}</span>
+                        {% endif %}
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col s3"></div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">people</i>
+                            <input placeholder="Número de equipes que podem vacinar" id="teams" type="number" class="validate" name="teams" value="{{ teams }}">
+                            <label for="teams">Equipes</label>
+                            {% if hasErrorText %}
+                      <span class="helper-text">{{ teamsErrorText }}</span>
+                        {% endif %}
+                          </div>
+                      </div>
+                <center>
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Calcular
+                    <i class="material-icons right">send</i>
+                  </button>
+                </center>
+                </form>
+              </div>
+        </div>
+        
+      <script type="text/javascript" src={% static 'vaccine/materialize.min.js' %}></script>
+    </body>
+  </html>

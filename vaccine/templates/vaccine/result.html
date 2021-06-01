@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    {% load static %}
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'vaccine/materialize.min.css' %}"
+        media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div style="padding-top: 25vh; padding-bottom: 0vh; padding-left: 25vw; padding-right: 25vw;">
+        <div class="card blue-grey darken-1 z-depht-5">
+            <div class="card-content white-text">
+                <h1 class="col s12 card-title" style="text-align: center;">Podem ser vacinadas hoje:</h1>
+                <h3 class="col s12" style="text-align: center;">{{ people }} pessoas</h3>
+                <h1 class="col s12 card-title" style="text-align: center;">Utilizando:</h1>
+                <h3 class="col s12" style="text-align: center;">{{ vaccines }} vacinas</h3>
+            </div>
+
+        </div>
+        <form class="col s12" method="POST" action="{% url 'index' %}">
+            {% csrf_token %}
+            <center>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Início
+                  <i class="material-icons right">home</i>
+                </button>
+
+            </center>
+        </form>
+
+    </div>
+
+    <script type="text/javascript" src={% static 'vaccine/materialize.min.js' %}></script>
+</body>
+
+</html>
